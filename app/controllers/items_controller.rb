@@ -1,16 +1,22 @@
 class ItemsController < ApplicationController
   include JSONAPI::ActsAsResourceController
-  before_action :authenticate_user
 
   def index
     @items = Item.all
-
-    render json: @items
+    render json: {"data": @items, 'user':current_user}
   end
 
   def show
-    id = param[:id]
+    id = params[:id]
     @item = Item.find(id)
+    render json: @item
+  end
+
+  def create
+    name = params[:name]
+    @item =Item.new
+    @item.attributes = {name: name}
+    @item.save()
     render json: @item
   end
 end

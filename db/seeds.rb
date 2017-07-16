@@ -18,9 +18,16 @@ User.create!({
   password_confirmation: 'test123'
 })
 
-10.times do
-  Item.create!(
-    name: FFaker::Lorem.sentence,
-    description: FFaker::Lorem.paragraphs.join(' ')
-  )
-end
+User.create!({
+  name: '山田 花子',
+  email: 'test2@user.com',
+  password: 'test123',
+  # password_confirmation: 'test123'
+})
+
+# 10.times do
+#   Item.create!(
+#     name: FFaker::Lorem.sentence,
+#     description: FFaker::Lorem.paragraphs.join(' ')
+#   )
+# end
